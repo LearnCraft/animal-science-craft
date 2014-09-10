@@ -1,0 +1,16 @@
+[
+{
+  "modid": "animalsciencecraft",
+  "name": "Animal Science Craft",
+  "description": "Learn about Animal Science through Minecraft, with better animals!.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["acbart", "ecayford"],
+  "credits": "Austin Cory Bart, Eleonor Cayford, Dr. Eli Tilevich, Dr. Michael Evans",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

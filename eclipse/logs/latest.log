@@ -1,0 +1,55 @@
+[09:43:24] [main/INFO]: Setting user: ForgeDevName
+[09:43:25] [Client thread/INFO]: LWJGL Version: 2.9.1
+[09:43:25] [Client thread/ERROR]: Couldn't initialize twitch stream
+[09:43:29] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Animal Science Craft
+[09:43:30] [Sound Library Loader/INFO]: Sound engine started
+[09:43:31] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[09:43:31] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[09:43:31] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Animal Science Craft
+[09:43:31] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[09:43:32] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[09:43:32] [Sound Library Loader/INFO]: Sound engine started
+[09:43:36] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[09:43:36] [Server thread/INFO]: Generating keypair
+[09:43:37] [Server thread/INFO]: Preparing start region for level 0
+[09:43:38] [Server thread/INFO]: Changing view distance to 12, from 10
+[09:43:38] [Server thread/INFO]: ForgeDevName[local:E:03d28b72] logged in with entity id 196 at (450.30000001192093, 1.330708504700474, 706.3000000119209)
+[09:43:38] [Server thread/INFO]: ForgeDevName joined the game
+[09:43:47] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
+[09:43:49] [Client thread/INFO]: [CHAT] --- Showing help page 1 of 5 (/help <page>) ---
+[09:43:49] [Client thread/INFO]: [CHAT] /achievement give <stat_name> [player]
+[09:43:49] [Client thread/INFO]: [CHAT] /clear <player> [item] [data]
+[09:43:49] [Client thread/INFO]: [CHAT] /debug <start|stop>
+[09:43:49] [Client thread/INFO]: [CHAT] /defaultgamemode <mode>
+[09:43:49] [Client thread/INFO]: [CHAT] /difficulty <new difficulty>
+[09:43:49] [Client thread/INFO]: [CHAT] /effect <player> <effect> [seconds] [amplifier]
+[09:43:49] [Client thread/INFO]: [CHAT] /enchant <player> <enchantment ID> [level]
+[09:43:49] [Client thread/INFO]: [CHAT] Tip: Use the <tab> key while typing a command to auto-complete the command or its arguments
+[09:43:52] [Client thread/INFO]: [CHAT] --- Showing help page 2 of 5 (/help <page>) ---
+[09:43:52] [Client thread/INFO]: [CHAT] Use /forge <subcommand>. Subcommands are tps, track
+[09:43:52] [Client thread/INFO]: [CHAT] /gamemode <mode> [player]
+[09:43:52] [Client thread/INFO]: [CHAT] /gamerule <rule name> <value> OR /gamerule <rule name>
+[09:43:52] [Client thread/INFO]: [CHAT] /give <player> <item> [amount] [data] [dataTag]
+[09:43:52] [Client thread/INFO]: [CHAT] /help [page|command name]
+[09:43:52] [Client thread/INFO]: [CHAT] /kill
+[09:43:52] [Client thread/INFO]: [CHAT] /me <action ...>
+[09:43:54] [Client thread/INFO]: [CHAT] --- Showing help page 3 of 5 (/help <page>) ---
+[09:43:54] [Client thread/INFO]: [CHAT] /playsound <sound> <player> [x] [y] [z] [volume] [pitch] [minimumVolume]
+[09:43:54] [Client thread/INFO]: [CHAT] /publish
+[09:43:54] [Client thread/INFO]: [CHAT] /say <message ...>
+[09:43:54] [Client thread/INFO]: [CHAT] /scoreboard <objectives|players|teams>
+[09:43:54] [Client thread/INFO]: [CHAT] /seed
+[09:43:54] [Client thread/INFO]: [CHAT] /setblock <x> <y> <z> <TileName> [dataValue] [oldBlockHandling] [dataTag]
+[09:43:54] [Client thread/INFO]: [CHAT] /setworldspawn OR /setworldspawn <x> <y> <z>
+[09:43:57] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
+[09:44:39] [Server thread/INFO]: Saving and pausing game...
+[09:44:39] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[09:44:39] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[09:44:39] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[09:44:39] [Server thread/INFO]: Stopping server
+[09:44:39] [Server thread/INFO]: Saving players
+[09:44:39] [Server thread/INFO]: Saving worlds
+[09:44:39] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[09:44:39] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[09:44:39] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[09:44:41] [Client thread/INFO]: Stopping!
