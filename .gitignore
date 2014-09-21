@@ -1,3 +1,7 @@
+eclipse/saves
+eclipse/logs
+eclipse/crash-reports
+
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -12,6 +16,7 @@
 hs_err_pid*
 
 *.pydevproject
+.gradle
 .project
 .metadata
 bin/**

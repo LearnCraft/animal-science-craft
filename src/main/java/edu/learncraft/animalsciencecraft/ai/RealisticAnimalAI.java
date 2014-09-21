@@ -1,16 +1,16 @@
 package edu.learncraft.animalsciencecraft.ai;
 
-import edu.learncraft.animalsciencecraft.mobs.EntityBoar;
+import edu.learncraft.animalsciencecraft.mobs.EntitySciencePig;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityJumpHelper;
 import net.minecraft.util.MathHelper;
 
 public class RealisticAnimalAI extends EntityAIBase {
 	
-	private final EntityBoar theEntity;
+	private final EntitySciencePig theEntity;
 	private boolean visibility;
 	
-	public RealisticAnimalAI(EntityBoar par1Entity) {
+	public RealisticAnimalAI(EntitySciencePig par1Entity) {
 		theEntity = par1Entity;
 		setMutexBits(1);		
 	}
