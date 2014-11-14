@@ -8,8 +8,11 @@ import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.BaconItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 
@@ -41,6 +44,9 @@ public class Main {
 	@SidedProxy(clientSide = "edu.learncraft.animalsciencecraft.proxy.ClientProxy", serverSide = "edu.learncraft.animalsciencecraft.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
+	// Items
+	public static Item bacon;
+	
 	public void registerEntitySpawns() {
 		
 	}
@@ -52,15 +58,23 @@ public class Main {
 		unregisterEntity(EntitySheep.class);
 		unregisterEntity(EntityCow.class);
 		unregisterEntity(EntityChicken.class);
+		unregisterEntity(EntityWolf.class);
 		registerEntity(EntitySciencePig.class, "entitySciencePig");
-		registerEntity(EntityScienceCow.class, "entityScienceCow");
+		//registerEntity(EntityScienceCow.class, "entityScienceCow");
 
 		BiomeGenBase[] allBiomes = Iterators.toArray(Iterators.filter(
 				Iterators.forArray(BiomeGenBase.getBiomeGenArray()),
 				Predicates.notNull()), BiomeGenBase.class);
+		
+		registerItems();
 
 		registerRecipes();
 		proxy.registerRenderers();
+	}
+
+	private void registerItems() {
+		bacon = new BaconItem().setTextureName("animalsciencecraft:bacon");
+		GameRegistry.registerItem(bacon, "bacon");
 	}
 
 	private static void unregisterEntity(Class entityClass) {
