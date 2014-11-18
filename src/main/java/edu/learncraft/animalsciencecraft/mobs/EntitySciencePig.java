@@ -7,6 +7,7 @@ import edu.learncraft.animalsciencecraft.Main;
 import edu.learncraft.animalsciencecraft.ai.AnimalViolentFromBackAI;
 import edu.learncraft.animalsciencecraft.ai.RealisticAnimalAI;
 import edu.learncraft.animalsciencecraft.enums.Gender;
+import edu.learncraft.animalsciencecraft.gui.SciencePigGui;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
@@ -96,9 +97,10 @@ public class EntitySciencePig extends EntityScientific {
 	}
 	
 	public boolean interact(EntityPlayer player) {
-		//player.openGui(Main.instance, Main.MODID, world, x, y, z);
-		player.addChatMessage(new ChatComponentTranslation("msg.pig_hint.txt"));
-		return true;
+		if (player.worldObj.isRemote) {
+			player.openGui(Main.instance, SciencePigGui.id, worldObj, this.getEntityId(), 0, 0);
+		}
+		return super.interact(player);
 	}
 
 }

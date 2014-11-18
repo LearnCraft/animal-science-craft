@@ -27,6 +27,7 @@ import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class EntityScientific extends EntityAnimal {
@@ -38,15 +39,62 @@ public class EntityScientific extends EntityAnimal {
 	protected int potentialForProduction;
 	protected Gender gender;
 	protected int bred;
-	protected List<EntityScientific> lineage;
+	protected String lineage;
 	protected List<Block> lastKnownTroughs;
-	protected Map<EntityLivingBase, Integer> affinities;
+	protected Map<String, Integer> affinities;
 	protected int meatQuantity;
 	protected boolean castrated;
 	protected int currentAge;
 	protected int feedEfficiency;
 	
 	public static final Random RANDOM = new Random();
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound)
+	{
+		super.writeEntityToNBT(compound);
+		if (!this.name.isEmpty()) {
+			compound.setString("name", this.name);
+		}
+		compound.setInteger("hunger", this.hunger);
+		compound.setInteger("domestication", this.domestication);
+		compound.setInteger("potentialForProduction", this.potentialForProduction);
+		compound.setString("gender", this.gender.name());
+		compound.setInteger("bred", this.bred);
+		compound.setInteger("meatQuantity", this.meatQuantity);
+		compound.setInteger("currentAge", this.currentAge);
+		compound.setInteger("feedEfficiency", this.feedEfficiency);
+		compound.setBoolean("castrated", this.castrated);
+		if (!this.lineage.isEmpty()) {
+			compound.setString("lineage", this.lineage);
+		}
+		compound.setIntArray("affinities", Affinities.encode(this.affinities));
+		//compound.setBoolean("companion", this.companion);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		if (compound.hasKey("name")) {
+			this.name = compound.getString("name");
+		}
+		this.hunger = compound.getInteger("hunger");
+		this.domestication = compound.getInteger("domestication");
+		this.potentialForProduction = compound.getInteger("potentialForProduction");
+		System.out.println("Banana"+ compound.getString("gender"));
+		if (compound.hasKey("gender")) {
+			this.gender = Gender.valueOf(compound.getString("gender"));
+		}
+		this.bred = compound.getInteger("bred");
+		this.meatQuantity = compound.getInteger("meatQuantity");
+		this.currentAge = compound.getInteger("currentAge");
+		this.feedEfficiency = compound.getInteger("feedEfficiency");
+		this.castrated = compound.getBoolean("castrated");
+		if (compound.hasKey("lineage")) {
+			this.lineage = compound.getString("lineage");
+		}
+		this.affinities = Affinities.decode(compound.getIntArray("affinities"));
+	}
 	
 	public EntityScientific(World par1World) {
 		super(par1World);
@@ -105,14 +153,14 @@ public class EntityScientific extends EntityAnimal {
 		hunger = 10;
 		bred = 0;
 		knownViableMates = new ArrayList<EntityScientific>();
-		lineage = new ArrayList<EntityScientific>();
+		lineage = "";
 		lastKnownTroughs = new ArrayList<Block>();
-		affinities = new HashMap<EntityLivingBase, Integer>();
+		affinities = new HashMap<String, Integer>();
 		gender = Gender.random();
 		castrated = false;
 		currentAge = 0;
 		domestication = 1;
-		
+		name = "No name";
 	}
 
 	public int getHunger() {
@@ -163,11 +211,11 @@ public class EntityScientific extends EntityAnimal {
 		this.bred = bred;
 	}
 
-	public List<EntityScientific> getLineage() {
+	public String getLineage() {
 		return lineage;
 	}
 
-	public void setLineage(List<EntityScientific> lineage) {
+	public void setLineage(String lineage) {
 		this.lineage = lineage;
 	}
 
@@ -179,11 +227,11 @@ public class EntityScientific extends EntityAnimal {
 		this.lastKnownTroughs = lastKnownTroughs;
 	}
 
-	public Map<EntityLivingBase, Integer> getAffinities() {
+	public Map<String, Integer> getAffinities() {
 		return affinities;
 	}
 
-	public void setAffinities(Map<EntityLivingBase, Integer> affinities) {
+	public void setAffinities(Map<String, Integer> affinities) {
 		this.affinities = affinities;
 	}
 
