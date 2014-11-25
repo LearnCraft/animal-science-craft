@@ -27,6 +27,9 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 
 public class EntitySciencePig extends EntityScientific {
+	
+	private static int PIG_ADULT_THRESHOLD = 20 * 60 * 3;
+	
 	public EntitySciencePig(World par1World) {
 		super(par1World);
 		this.setSize(2.0F,10.5F);
@@ -101,6 +104,33 @@ public class EntitySciencePig extends EntityScientific {
 			player.openGui(Main.instance, SciencePigGui.id, worldObj, this.getEntityId(), 0, 0);
 		}
 		return super.interact(player);
+	}
+
+	public String getProperName() {
+		if (isAdult()) {
+			switch (getGender()) {
+			case female:
+				if (getBred() > 0) {
+					return "sow";
+				} else {
+					return "gilt";
+				}
+			case male:
+				if (isCastrated()) {
+					return "barrow";
+				} else {
+					return "boar";
+				}
+			default:
+				return "hog";
+			}
+		} else {
+			return "piglet";
+		}
+	}
+	
+	public boolean isAdult() {
+		return getAge() <= PIG_ADULT_THRESHOLD;
 	}
 
 }

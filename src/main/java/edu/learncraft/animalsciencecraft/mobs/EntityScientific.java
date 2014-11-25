@@ -30,7 +30,7 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntityScientific extends EntityAnimal {
+public abstract class EntityScientific extends EntityAnimal {
 	
 	protected String name;
 	protected int hunger;
@@ -264,6 +264,8 @@ public class EntityScientific extends EntityAnimal {
 	}
 	
 	
-	
+	public abstract String getProperName();
 
+	public abstract boolean isAdult();
+	
 }

@@ -15,16 +15,20 @@ public class SciencePigGui extends GuiContainer {
 	private static final ResourceLocation texture = new ResourceLocation(
 			Main.MODID + ":" + "textures/gui/pig.png");
 	public static int id = 0;
+	private EntitySciencePig entity;
 
 	public SciencePigGui(EntitySciencePig pig) {
 		super(new ContainerScientific(pig));
+		entity = pig;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 		// draw text and stuff here
 		// the parameters for drawString are: string, x, y, color
-		fontRendererObj.drawString("Pig", 8, 6, 4210752);
+		fontRendererObj.drawString(entity.getProperName(), 8, 6, 4210752);
+		fontRendererObj.drawString("Gender: "+entity.getGender().name(), 8, 26, 4210752);
+		fontRendererObj.drawString(""+entity.getAge(), 8, 46, 4210752);
 	}
 
 	@Override

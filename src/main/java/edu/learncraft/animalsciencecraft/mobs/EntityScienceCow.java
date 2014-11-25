@@ -29,6 +29,8 @@ import net.minecraft.world.World;
 
 public class EntityScienceCow extends EntityScientific {
 	
+	private static final int COW_ADULT_THRESHOLD = 20 * 60 * 4;
+	
 	protected void initializeWild() {
 		feedEfficiency = 1 + RANDOM.nextInt(3);
 		potentialForProduction = 1 + RANDOM.nextInt(3);
@@ -83,6 +85,34 @@ public class EntityScienceCow extends EntityScientific {
 	
 	public Item getDropItem() {
 		return Items.beef; //RANDOM.nextInt(1+meatQuantity);
+	}
+
+	@Override
+	public String getProperName() {
+		if (isAdult()) {
+			switch (getGender()) {
+			case female:
+				if (getBred() > 0) {
+					return "cow";
+				} else {
+					return "heifer";
+				}
+			case male:
+				if (isCastrated()) {
+					return "steer";
+				} else {
+					return "bull";
+				}
+			default:
+				return "cattle";
+			}
+		} else {
+			return "calf";
+		}
+	}
+	
+	public boolean isAdult() {
+		return getAge() <= COW_ADULT_THRESHOLD;
 	}
 
 }
