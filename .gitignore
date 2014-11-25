@@ -1,6 +1,9 @@
 eclipse/saves
 eclipse/logs
 eclipse/crash-reports
+config/
+logs/
+saves/
 
 *.class
 
