@@ -23,7 +23,7 @@ public class Lineage {
 		Iterable<String> split_relatives = Splitter.fixedLength(UUID_SIZE).split(lineage);
 		int index = 0;
 		for (String raw_relative : split_relatives) {
-			findEntityByPersistentID(theWorld, raw_relative);
+			EntityScientific.findEntityByPersistentID(theWorld, raw_relative);
 		}
 		return null;
 	}
@@ -56,17 +56,4 @@ public class Lineage {
 		return false;
 	}
 
-	/**
-	 * Useful function to find the entity with the given UUID
-	 * @param world
-	 * @param id
-	 * @return
-	 */
-	private static Entity findEntityByPersistentID(World world, String id) {
-		for (Object o : world.getLoadedEntityList()) {
-			Entity e = (Entity)o;
-			if (e.getPersistentID().toString().equals(id)) return e;
-		}
-		return null;
-	}
 }

@@ -130,6 +130,7 @@ public class EntitySciencePig extends EntityScientific {
 	}
 	
 	public boolean isAdult() {
+		this.getGrowingAge();
 		return getAge() <= PIG_ADULT_THRESHOLD;
 	}
 

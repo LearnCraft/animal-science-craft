@@ -46,11 +46,6 @@ public class EntityScienceCow extends EntityScientific {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		currentAge += 1;
-	}
-	
-	private int getCurrentAge() {
-		return currentAge;
 	}
 
 	@Override

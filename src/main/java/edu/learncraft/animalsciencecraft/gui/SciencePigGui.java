@@ -28,7 +28,7 @@ public class SciencePigGui extends GuiContainer {
 		// the parameters for drawString are: string, x, y, color
 		fontRendererObj.drawString(entity.getProperName(), 8, 6, 4210752);
 		fontRendererObj.drawString("Gender: "+entity.getGender().name(), 8, 26, 4210752);
-		fontRendererObj.drawString(""+entity.getAge(), 8, 46, 4210752);
+		fontRendererObj.drawString(""+entity.ticksExisted, 8, 46, 4210752);
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import java.util.Random;
 import edu.learncraft.animalsciencecraft.ai.RealisticAnimalAI;
 import edu.learncraft.animalsciencecraft.enums.Gender;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
@@ -39,13 +40,14 @@ public abstract class EntityScientific extends EntityAnimal {
 	protected int potentialForProduction;
 	protected Gender gender;
 	protected int bred;
+	protected EntityScientific mate;
 	protected String lineage;
 	protected List<Block> lastKnownTroughs;
 	protected Map<String, Integer> affinities;
 	protected int meatQuantity;
 	protected boolean castrated;
-	protected int currentAge;
 	protected int feedEfficiency;
+	protected long birthdate; 
 	
 	public static final Random RANDOM = new Random();
 	
@@ -62,11 +64,13 @@ public abstract class EntityScientific extends EntityAnimal {
 		compound.setString("gender", this.gender.name());
 		compound.setInteger("bred", this.bred);
 		compound.setInteger("meatQuantity", this.meatQuantity);
-		compound.setInteger("currentAge", this.currentAge);
 		compound.setInteger("feedEfficiency", this.feedEfficiency);
 		compound.setBoolean("castrated", this.castrated);
 		if (!this.lineage.isEmpty()) {
 			compound.setString("lineage", this.lineage);
+		}
+		if (this.mate != null) {
+			compound.setString("mate", this.mate.getUniqueID().toString());
 		}
 		compound.setIntArray("affinities", Affinities.encode(this.affinities));
 		//compound.setBoolean("companion", this.companion);
@@ -81,17 +85,18 @@ public abstract class EntityScientific extends EntityAnimal {
 		this.hunger = compound.getInteger("hunger");
 		this.domestication = compound.getInteger("domestication");
 		this.potentialForProduction = compound.getInteger("potentialForProduction");
-		System.out.println("Banana"+ compound.getString("gender"));
 		if (compound.hasKey("gender")) {
 			this.gender = Gender.valueOf(compound.getString("gender"));
 		}
 		this.bred = compound.getInteger("bred");
 		this.meatQuantity = compound.getInteger("meatQuantity");
-		this.currentAge = compound.getInteger("currentAge");
 		this.feedEfficiency = compound.getInteger("feedEfficiency");
 		this.castrated = compound.getBoolean("castrated");
 		if (compound.hasKey("lineage")) {
 			this.lineage = compound.getString("lineage");
+		}
+		if (compound.hasKey("mate")) {
+			this.mate = (EntityScientific) findEntityByPersistentID(worldObj, compound.getString("mate")); 
 		}
 		this.affinities = Affinities.decode(compound.getIntArray("affinities"));
 	}
@@ -106,11 +111,6 @@ public abstract class EntityScientific extends EntityAnimal {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		currentAge += 1;
-	}
-	
-	private int getCurrentAge() {
-		return currentAge;
 	}
 
 	@Override
@@ -158,9 +158,11 @@ public abstract class EntityScientific extends EntityAnimal {
 		affinities = new HashMap<String, Integer>();
 		gender = Gender.random();
 		castrated = false;
-		currentAge = 0;
 		domestication = 1;
 		name = "No name";
+		mate = null;
+		
+		worldObj.getWorldTime();
 	}
 
 	public int getHunger() {
@@ -258,14 +260,60 @@ public abstract class EntityScientific extends EntityAnimal {
 	public void setFeedEfficiency(int feedEfficiency) {
 		this.feedEfficiency = feedEfficiency;
 	}
+	
+	public void face(Entity entity) {
+		double xDiff = entity.posX - this.posX;
+        double zDiff = entity.posZ - this.posZ;
+        this.rotationYaw = (float)(Math.atan2(zDiff, xDiff) * 180.0D / Math.PI) - 90.0F;
+        
+        
+	}
+	
+	public boolean canMateWith(Entity other) {
+		if (other.getClass() != this.getClass()) {
+			return false;
+		}
+		EntityScientific otherES = (EntityScientific)other; 
+		if (otherES.getGender() != this.getGender()) {
+			if (otherES.canBreed() && this.canBreed()) {
+			}
+		}
+		return false;
+	}
+	
+	private boolean canBreed() {
+		if (this.getGender() == Gender.male) {
+			return !this.castrated;
+		} else {
+			return this.mate == null;
+		}
+	}
 
-	public void setCurrentAge(int currentAge) {
-		this.currentAge = currentAge;
+	public void procreate() {
+		
+	}
+	
+	public void breed() {
+		this.mate = 
 	}
 	
 	
 	public abstract String getProperName();
 
 	public abstract boolean isAdult();
+	
+	/**
+	 * Useful function to find the entity with the given UUID
+	 * @param world
+	 * @param id
+	 * @return
+	 */
+	public static Entity findEntityByPersistentID(World world, String id) {
+		for (Object o : world.getLoadedEntityList()) {
+			Entity e = (Entity)o;
+			if (e.getPersistentID().toString().equals(id)) return e;
+		}
+		return null;
+	}
 	
 }
