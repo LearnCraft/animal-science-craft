@@ -26,9 +26,11 @@ public class SciencePigGui extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int param1, int param2) {
 		// draw text and stuff here
 		// the parameters for drawString are: string, x, y, color
-		fontRendererObj.drawString(entity.getProperName(), 8, 6, 4210752);
-		fontRendererObj.drawString("Gender: "+entity.getGender().name(), 8, 26, 4210752);
-		fontRendererObj.drawString(""+entity.ticksExisted, 8, 46, 4210752);
+		fontRendererObj.drawString(entity.getProperName(), 8, 26, 4210752);
+		fontRendererObj.drawString("Gender: "+entity.getGender().name(), 85, 26, 4210752);
+		fontRendererObj.drawString(""+entity.ticksExisted , 85, 8, 4210752);
+		fontRendererObj.drawString("Hunger", 8, 44, 4210752);
+		fontRendererObj.drawString("Stress", 8, 62, 4210752);
 	}
 
 	@Override
