@@ -66,6 +66,7 @@ public abstract class EntityScientific extends EntityAnimal {
 		compound.setInteger("meatQuantity", this.meatQuantity);
 		compound.setInteger("feedEfficiency", this.feedEfficiency);
 		compound.setBoolean("castrated", this.castrated);
+		compound.setLong("birthdate", this.birthdate);
 		if (!this.lineage.isEmpty()) {
 			compound.setString("lineage", this.lineage);
 		}
@@ -92,6 +93,7 @@ public abstract class EntityScientific extends EntityAnimal {
 		this.meatQuantity = compound.getInteger("meatQuantity");
 		this.feedEfficiency = compound.getInteger("feedEfficiency");
 		this.castrated = compound.getBoolean("castrated");
+		this.birthdate = compound.getLong("birthdate");
 		if (compound.hasKey("lineage")) {
 			this.lineage = compound.getString("lineage");
 		}
@@ -161,8 +163,7 @@ public abstract class EntityScientific extends EntityAnimal {
 		domestication = 1;
 		name = "No name";
 		mate = null;
-		
-		worldObj.getWorldTime();
+		birthdate = worldObj.getWorldTime();
 	}
 
 	public int getHunger() {
@@ -293,8 +294,8 @@ public abstract class EntityScientific extends EntityAnimal {
 		
 	}
 	
-	public void breed() {
-		this.mate = 
+	public void breed(EntityScientific other) {
+		this.mate = other;
 	}
 	
 	
