@@ -7,17 +7,29 @@ import edu.learncraft.animalsciencecraft.mobs.EntitySciencePig;
 import edu.learncraft.animalsciencecraft.mobs.EntityScientific;
 
 public class GuiHandler implements IGuiHandler {
+
 	//returns an instance of the Container you made earlier
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world,
                     int x, int y, int z) {
-            return new ContainerScientific((EntityScientific) world.getEntityByID(x));
+    	switch (id) {
+    	default: case SciencePigGui.id:
+    		return new ContainerScientific((EntityScientific)world.getEntityByID(x));
+    	case TutorialGui.id:
+    		return new TutorialGui(x);
+    	}
+            
     }
 
     //returns an instance of the Gui you made earlier
     @Override
     public Object getClientGuiElement(int id, EntityPlayer player, World world,
                     int x, int y, int z) {
-    	return new SciencePigGui((EntitySciencePig) world.getEntityByID(x));
+    	switch (id) {
+    	default: case SciencePigGui.id:
+    		return new SciencePigGui((EntitySciencePig) world.getEntityByID(x));
+    	case TutorialGui.id:
+    		return new TutorialGui(x);
+    	}
     }
 }

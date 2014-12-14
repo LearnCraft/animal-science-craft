@@ -11,7 +11,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderers() {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySciencePig.class,
 				new RenderScientificPig(new ModelScientificPig(), 
-						new ModelScientificPig(0.5F), 0.5F));
+						new ModelScientificPig(0.25F), 0.25F));
 
 	}
 }

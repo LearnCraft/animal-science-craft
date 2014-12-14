@@ -27,10 +27,18 @@ public class Lineage {
 		}
 		return null;
 	}
+	
+	public static String getParents(String lineage) {
+		if (lineage.length() >= 2 * UUID_SIZE) {
+			return lineage.substring(0, 2*UUID_SIZE);
+		} else {
+			return "";
+		}
+	}
 
-	public static Lineage mate(EntityScientific father, EntityScientific mother) {
-		// TODO
-		return null;
+	public static String mate(EntityScientific father, EntityScientific mother) {
+		String lineage = father.getUniqueID().toString() + mother.getUniqueID().toString() + getParents(father.getLineage()) + getParents(mother.getLineage());
+		return lineage;
 	}
 
 	/**
@@ -40,15 +48,17 @@ public class Lineage {
 	 * @param motherLineage
 	 * @return
 	 */
-	public boolean areRelated(String fatherLineage, String motherLineage) {
+	public static boolean areRelated(EntityScientific mother, EntityScientific father) {
+		String motherLineage = mother.getUniqueID().toString()+mother.getLineage();
+		String fatherLineage = father.getUniqueID().toString()+father.getLineage();
 		// Build up mother's family as a set
 		Set<String> motherFamily = new HashSet<String>();
 		for (int i = 0; i < motherLineage.length(); i+= UUID_SIZE) {
-			motherFamily.add(motherLineage.substring(i, UUID_SIZE));
+			motherFamily.add(motherLineage.substring(i, i+UUID_SIZE));
 		}
 		// Check if any of the father's family is in the set
 		for (int i = 0; i < fatherLineage.length(); i+= UUID_SIZE) {
-			String fatherRelative = fatherLineage.substring(i, UUID_SIZE);
+			String fatherRelative = fatherLineage.substring(i, i+UUID_SIZE);
 			if (motherFamily.contains(fatherRelative)) {
 				return true;
 			}

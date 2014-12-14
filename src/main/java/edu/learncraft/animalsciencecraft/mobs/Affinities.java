@@ -12,9 +12,9 @@ public enum Affinities {
 	private static final String[] names ={ EntitySciencePig.class.getName(),
 		EntityScienceCow.class.getName() }; 
 
-	public static int[] encode(Map<String, Integer> affinities) {
-		int[] values = new int[names.length];
-		for (int i = 0; i < values.length; i += 1) {
+	public static String encode(Map<String, Integer> affinities) {
+		/*int[] values = new int[names.length];
+		for (int i = 0; i < names.length; i += 1) {
 			if (affinities.containsKey(names[i])) {
 				values[i] = affinities.get(names[i]);
 			} else {
@@ -22,12 +22,14 @@ public enum Affinities {
 			}
 		}
 		return values;
+		*/
+		return "";
 	}
 
-	public static Map<String, Integer> decode(int[] affinities) {
+	public static Map<String, Integer> decode(String string) {
 		Map<String, Integer> result = new HashMap<String, Integer>(32);
 		for (int i = 0; i < names.length; i += 1) {
-			result.put(names[i], affinities[i]);
+			result.put(names[i], Integer.parseInt(""+string.charAt(i)));
 		}
 		return result;
 	}
