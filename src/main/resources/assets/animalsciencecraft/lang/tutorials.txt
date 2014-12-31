@@ -1,0 +1,27 @@
+*Your First Day
+    *Mine Wood
+        image: tut_yfd_1.png
+        (1) Approach a tree.
+        (2) Hold left mouse button.
+        (3) Wait until the log breaks.
+        (4) Pick up wood.
+    *Craft Planks
+        image: tut_yfd_2.png
+        (1) Press 'E' to bring up your Inventory
+        (2) Click your log, click your crafting table
+        (3) Click your wood, click your inventory bar
+    *Another Heading
+        image: tut_yfd_2.png
+        (1) Press 'E' to bring up your Inventory
+        (2) Click your log, click your crafting table
+        (3) Click your wood, click your inventory bar
+    *Nested Nesting
+        *Super Nested
+*Making Tools
+    *Make Sword
+        image: tut_mt_sword.png
+        Combine two sticks and three planks as shown above.
+        You can replace the planks with stone, 
+        iron ingots, or diamonds to make an improved 
+        version of this weapon.
+*Fighting Mobs

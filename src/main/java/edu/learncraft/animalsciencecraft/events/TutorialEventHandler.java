@@ -1,5 +1,10 @@
 package edu.learncraft.animalsciencecraft.events;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.block.Block;
@@ -46,7 +51,7 @@ public class TutorialEventHandler {
 
 		if (!event.world.isRemote) {
 			if (event.block == Blocks.log || event.block == Blocks.log2) {
-				setTutorial(1);
+				setTutorial(new Integer[]{0, 0, 1});
 			}
 		}
 	}
@@ -65,13 +70,25 @@ public class TutorialEventHandler {
 		}
 	}
 
-	private void setTutorial(int level) {
-		if (player.getEntityData().getInteger(BASIC_TUTORIAL) != level
-				&& level > 0) {
-			player.addChatMessage(new ChatComponentText(
-					"You have new help available - press 'H'."));
+	private void setTutorial(Integer[] level) {
+		// if (player.getEntityData().getInteger(BASIC_TUTORIAL) != level
+		// && level > 0) {
+		// }
+		if (!Main.seenPages.isEmpty()) {
+			List<Integer> l1 = new ArrayList<Integer>(
+					Arrays.asList(Main.seenPages.peek()));
+			List<Integer> l2 = new ArrayList<Integer>(Arrays.asList(level));
+
+			Collections.sort(l1);
+			Collections.sort(l2);
+
+			if (l1.equals(l2)) {
+				player.addChatMessage(new ChatComponentText(
+						"You have new help available - press 'H'."));
+			}
 		}
-		player.getEntityData().setInteger(BASIC_TUTORIAL, level);
+		Main.seenPages.push(level);
+		// player.getEntityData().setInteger(BASIC_TUTORIAL, level);
 	}
 
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
@@ -83,7 +100,7 @@ public class TutorialEventHandler {
 			player.addChatMessage(new ChatComponentText(
 					"Press 'H' for help at any time."));
 			if (!player.getEntityData().hasKey(BASIC_TUTORIAL)) {
-				setTutorial(0);
+				setTutorial(new Integer[]{0, 0, 0});
 			}
 		}
 	}

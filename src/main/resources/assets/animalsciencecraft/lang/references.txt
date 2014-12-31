@@ -1,0 +1,7 @@
+*Wood
+    *Trees
+        There are several kinds of trees:
+        - Oak
+        - Birch
+*Tools
+*Ore

@@ -16,7 +16,7 @@ public class GuiHandler implements IGuiHandler {
     	default: case SciencePigGui.id:
     		return new ContainerScientific((EntityScientific)world.getEntityByID(x));
     	case TutorialGui.id:
-    		return new TutorialGui(x);
+    		return new TutorialGui();
     	}
             
     }
@@ -29,7 +29,7 @@ public class GuiHandler implements IGuiHandler {
     	default: case SciencePigGui.id:
     		return new SciencePigGui((EntitySciencePig) world.getEntityByID(x));
     	case TutorialGui.id:
-    		return new TutorialGui(x);
+    		return new TutorialGui();
     	}
     }
 }

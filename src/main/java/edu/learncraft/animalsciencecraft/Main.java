@@ -11,10 +11,17 @@ package edu.learncraft.animalsciencecraft;
  * -) 
  * -) Teaching dogs to find items (ways to give it a scent) (powederize)
  * -) Pigs should find mushrooms
+ * 
+ * 
+ * By looking at a block and pressing a key, it should immediately pull up the reference page.
  */
 
+import java.io.IOException;
 import java.util.Random;
+import java.util.Stack;
 
+import scala.reflect.internal.Trees.This;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityChicken;
@@ -27,6 +34,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -46,6 +54,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import edu.learncraft.animalsciencecraft.blocks.ModBlocks;
 import edu.learncraft.animalsciencecraft.events.TutorialEventHandler;
 import edu.learncraft.animalsciencecraft.gui.GuiHandler;
+import edu.learncraft.animalsciencecraft.gui.pages.Page;
 import edu.learncraft.animalsciencecraft.item.BaconItem;
 import edu.learncraft.animalsciencecraft.mobs.EntityScienceCow;
 import edu.learncraft.animalsciencecraft.mobs.EntitySciencePig;
@@ -65,6 +74,11 @@ public class Main {
 
 	// Items
 	public static Item bacon;
+	public static Page homePage;
+	public static Page tutorialsPage;
+	public static Page referencesPage;
+	public static Page errorPage;
+	public static Stack<Integer[]> seenPages;
 
 	public static void registerEntity(Class entityClass, String name) {
 		int entityID = EntityRegistry.findGlobalUniqueEntityId();
@@ -129,6 +143,7 @@ public class Main {
 		registerItems();
 		registerGUIs();
 		registerEventListeners();
+		registerTutorialPages();
 
 		proxy.registerRenderers();
 	}
@@ -160,10 +175,17 @@ public class Main {
 	
 	public void registerEventListeners() 
 	{
-	    // DEBUG
-	    System.out.println("Registering event listeners");
-
 	    FMLCommonHandler.instance().bus().register(new TutorialEventHandler());
 	    MinecraftForge.EVENT_BUS.register(new TutorialEventHandler());
+	}
+	
+	private static void registerTutorialPages() {
+		Page[] pages = proxy.loadTutorialPages();
+		homePage = pages[0];
+		referencesPage = pages[1];
+		tutorialsPage = pages[2];
+		errorPage = pages[3];
+		
+		seenPages = new Stack<Integer[]>();
 	}
 }
