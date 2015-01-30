@@ -1,0 +1,48 @@
+Reproduction
+Two animals reproduce.
+    Pigs have large litters; the number of babies they produce is determined by their Potential for Production stat.
+    Cattle have single birth
+    sheep are inclined to have twins
+    chickens hatch from eggs. 
+In all cases, differently gendered animals are involved (roosters must be near eggs, but bulls, rams, and boars have to be near the female).
+
+Genetic Traits
+When animals reproduce, their new genetic traits are based on their parents. Unlike regular minecraft animals, they tend to improve over multiple generations - however, animals need to be bred to specialization, e.g., breeding for a higher Meat Quantity leads to a lower Potential for Production. Every new generation of animals, you will expect some distribution of animals - you need to cull the lesser animals, and encourage the good ones. 
+
+Hunger
+Animals now eat to survive. If their hunger drops to zero, then they die. The amount of hunger they recover from their food source is determined by their Feed Efficiency stat.
+
+Animal Products
+Animals products dropped on death have better return on investment. Death drops are determined by the Meat Quantity stat, with a higher stat yielding more and possibly better meat:
+    Pigs: Pork at low levels, bacon at high levels
+    Cattle: Steak at low levels, filet at high levels, leather at all levels.
+    Sheep: Mutton at all levels (mutton is greatly nerfed in value - humans don't usually eat sheep)
+    Chicken: Chicken Meat at all levels
+
+Animal By-products
+Some animals have by-products that do not require killing the animal. These drops are determined by the Production Potential stat.
+    Milk is more useful (offers a health healing enchantment) and is variable - the higher the Production Potential stat, the more the milk will heal you. Milk also stacks now and don't require buckets.
+    Feathers are dropped passively, similar to eggs.
+    Wool is much the same as it was before
+
+Size and Age
+Animals age and die - but on the plus side, they are now invincible to enemy mobs. As animals get older, they increase in size. This size is also determined by their hunger - hungrier animals are leaner and smaller.
+
+Incest
+Breeding related animals in the real world (inbreeding) has some value with companion animals, but is not practiced with livestock. Lineage is tracked for each animal, and they will not breed with another animal that has a common ancestor (to two generations).
+
+Classification
+Animals are named based on their species and reproductive capabilities. The in-game system uses this taxonomy.
+    Cattle: Calf, Cow, Steer, Bull, ...
+
+Domestication
+Wild animals are not easy to manage - they are skittish if you move too fast and they might even attack if you approach from the wrong side. Domesticate animals by breeding together more passive animals - most packs will have at least one chill animal in the group, and they are the ones you should pick. Once animals have been bred for domestication, they can be bred for Meat Quantity, Production Potential, and Feed Efficiency (this is why you will not see wild pigs with exceptionally high Production Potential).
+
+Growth Hormones
+Growth Hormones offer a boost in production for the animal. They are bought cheaply from villagers.
+
+Stress
+Stressed animals will not reproduce and will get antsy (make them move about more). They also act like they are less domesticated. One of the most complicated aspects of animals are their stress level, which is a combination of many factors.
+    Animals do not like to be too tightly packed
+    They do not like to be hungry
+
