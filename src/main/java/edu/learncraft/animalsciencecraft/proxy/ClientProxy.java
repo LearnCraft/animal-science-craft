@@ -8,8 +8,11 @@ import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import edu.learncraft.animalsciencecraft.Main;
 import edu.learncraft.animalsciencecraft.gui.pages.Page;
+import edu.learncraft.animalsciencecraft.mobs.EntityScienceCow;
 import edu.learncraft.animalsciencecraft.mobs.EntitySciencePig;
+import edu.learncraft.animalsciencecraft.models.ModelScientificCow;
 import edu.learncraft.animalsciencecraft.models.ModelScientificPig;
+import edu.learncraft.animalsciencecraft.renders.RenderScientificCow;
 import edu.learncraft.animalsciencecraft.renders.RenderScientificPig;
 
 public class ClientProxy extends CommonProxy {
@@ -18,7 +21,15 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySciencePig.class,
 				new RenderScientificPig(new ModelScientificPig(), 
 						new ModelScientificPig(0.25F), 0.25F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityScienceCow.class,
+				new RenderScientificCow(new ModelScientificCow(), 
+						new ModelScientificCow(0.25F), 0.25F));
 
+	}
+	
+	@Override
+	public void initializeBookServer() {
+		
 	}
 	
 	@Override

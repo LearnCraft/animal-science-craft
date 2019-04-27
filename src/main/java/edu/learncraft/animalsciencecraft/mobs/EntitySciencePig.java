@@ -63,7 +63,7 @@ public class EntitySciencePig extends EntityScientific {
 	}
 
 	public boolean isOld() {
-		return getCurrentAge() >= (ESTROUS_CYCLE * 4);
+		return getCurrentAge() >= (ESTROUS_CYCLE * 8);
 	}
 
 	public String toString() {

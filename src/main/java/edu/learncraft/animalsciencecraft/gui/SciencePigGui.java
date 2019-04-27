@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 import edu.learncraft.animalsciencecraft.Main;
 import edu.learncraft.animalsciencecraft.mobs.EntitySciencePig;
+import edu.learncraft.animalsciencecraft.mobs.EntityScientific;
 import edu.learncraft.animalsciencecraft.mobs.HashUUID;
 
 public class SciencePigGui extends GuiContainer {
@@ -16,11 +17,11 @@ public class SciencePigGui extends GuiContainer {
 	private static final ResourceLocation texture = new ResourceLocation(
 			Main.MODID + ":" + "textures/gui/pig.png");
 	public final static int id = 0;
-	private EntitySciencePig entity;
+	private EntityScientific entity;
 
-	public SciencePigGui(EntitySciencePig pig) {
-		super(new ContainerScientific(pig));
-		entity = pig;
+	public SciencePigGui(EntityScientific animal) {
+		super(new ContainerScientific(animal));
+		entity = animal;
 	}
 
 	@Override

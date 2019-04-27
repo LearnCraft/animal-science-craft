@@ -55,6 +55,7 @@ import edu.learncraft.animalsciencecraft.blocks.ModBlocks;
 import edu.learncraft.animalsciencecraft.events.TutorialEventHandler;
 import edu.learncraft.animalsciencecraft.gui.GuiHandler;
 import edu.learncraft.animalsciencecraft.gui.pages.Page;
+import edu.learncraft.animalsciencecraft.gui.server.BookProfile;
 import edu.learncraft.animalsciencecraft.item.BaconItem;
 import edu.learncraft.animalsciencecraft.mobs.EntityScienceCow;
 import edu.learncraft.animalsciencecraft.mobs.EntitySciencePig;
@@ -170,6 +171,7 @@ public class Main {
 		unregisterEntity(EntityHorse.class);
 		
 		registerEntity(EntitySciencePig.class, "entitySciencePig");
+		registerEntity(EntityScienceCow.class, "entityScienceCow");
 		// registerEntity(EntityScienceCow.class, "entityScienceCow");
 	}
 	
@@ -187,5 +189,8 @@ public class Main {
 		errorPage = pages[3];
 		
 		seenPages = new Stack<Integer[]>();
+		
+		BookProfile newProfile = new BookProfile(null);
+		
 	}
 }

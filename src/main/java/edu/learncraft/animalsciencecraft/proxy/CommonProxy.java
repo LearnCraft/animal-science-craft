@@ -13,4 +13,9 @@ public class CommonProxy {
 		Page blank = new Page("Blank", 0, Page.FLAG_ERROR);
 		return new Page[] {blank, blank, blank, blank};
 	}
+
+	public void initializeBookServer() {
+		// TODO Auto-generated method stub
+		
+	}
 }

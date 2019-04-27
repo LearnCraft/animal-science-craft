@@ -3,5 +3,6 @@ entity.entityScienceCow.name=Cow
 tile.animalsciencecraft_silageBlock.name=Silage Block
 item.bottleofgenetics.name=Bottle of Genetics
 item.bacon.name=Bacon
+item.filet.name=filet
 itemGroup.animalscience=Animal Science
 msg.pig_hint.txt=You cannot just walk up and right click a pig...
